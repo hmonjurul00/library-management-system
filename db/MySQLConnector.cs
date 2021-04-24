@@ -1,25 +1,17 @@
 using System;
 using MySql.Data.MySqlClient;
 
-namespace library_management_system
+namespace db
 {
     public class MySQLConnector
     {
-        private static const string connectionString = "server=localhost;database=LibraryBookStore;uid=root;pwd=;";
+        private static string connectionString = "server=localhost;database=LibraryBookStore;UID=root;password=";
         private static MySqlConnection connection = new MySqlConnection(connectionString);
 
-        public bool connectMySQLDatabase() 
+        public void connectMySQLDatabase() 
         {
-            try 
-            {
-                connection.Open();
-                Console.WriteLine("connected with database successfully");
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine("database connection failed!!!");
-            }
-            return false;
+           connection.Open();
+           Console.WriteLine("connected with database successfully");
         }
     }
 }
