@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using library_management_system.views;
+using db;
 
 namespace library_management_system
 {
@@ -15,6 +16,8 @@ namespace library_management_system
         [STAThread]
         static void Main()
         {
+            MySQLConnector mySQLConnector = new MySQLConnector();
+            mySQLConnector.connectMySQLDatabase();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
