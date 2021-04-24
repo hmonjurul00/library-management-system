@@ -69,6 +69,24 @@ namespace library_management_system
         }
         public ManagerBookEntry() { }
 
-        public ManagerBookEntry(int _bookId, string _bookName, int _bookPublishYear) { }
+        public ManagerBookEntry(
+            int _bookId,
+            string _bookName,
+            int _bookPublishYear,
+            string _writerName,
+            int _quantityOfBook,
+            string _categoryName,
+            DateTime _entryDate,
+            Boolean _availableBook)
+        {
+            this.bookId = _bookId;
+            this.bookName = _bookName;
+            this.bookPublishYear = _bookPublishYear;
+            this.writerName = _writerName;
+            this.quantityOfBook = _quantityOfBook;
+            this.catagoryName = _categoryName;
+            this.entryDate = _entryDate;
+            this.availableBook = _availableBook;
+        }
     }
 }
