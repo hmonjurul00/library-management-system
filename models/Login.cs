@@ -1,6 +1,6 @@
 using System;
 
-namespace library_management_system
+namespace model
 {
     public class Login
     {
