@@ -8,21 +8,11 @@ using System.Windows.Forms;
 
 namespace library_management_system.views
 {
-    public partial class ManagerEditBookInfoForm : Form
+    public partial class ManagerLoginForm : Form
     {
-        public ManagerEditBookInfoForm()
+        public ManagerLoginForm()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

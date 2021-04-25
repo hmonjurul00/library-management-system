@@ -14,5 +14,22 @@ namespace library_management_system.views
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdminLoginForm adminLoginForm = new AdminLoginForm();
+            adminLoginForm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ManagerLoginForm managerLoginForm = new ManagerLoginForm();
+            managerLoginForm.Show();
+        }
     }
 }
