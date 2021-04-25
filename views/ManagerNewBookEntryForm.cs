@@ -14,5 +14,10 @@ namespace library_management_system.views
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
