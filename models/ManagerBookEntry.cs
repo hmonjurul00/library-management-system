@@ -1,6 +1,6 @@
 using System;
 
-namespace model
+namespace models
 {
     public class ManagerBookEntry
     {
