@@ -1,12 +1,13 @@
 using System;
 using db;
-using model;
+using models;
 
 namespace services 
 {
     public class Auth 
     {
         private MySQLConnector mySQLConnector = new MySQLConnector(); 
+        public Auth() { }
 
         public Boolean userLogin(Login login) 
         {

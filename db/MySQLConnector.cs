@@ -41,12 +41,16 @@ namespace db
             mySqlCommand.Parameters[2].Value = login.Role;
 
             MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
-            closeConnection();
             
-            if (mySqlDataReader.Read() != null) 
+
+            if (mySqlDataReader.Read()) 
             {
+                mySqlDataReader.Close();
+                closeConnection();
                 return true;
             }
+            mySqlDataReader.Close();
+            closeConnection();
             return false;
         }
     }
