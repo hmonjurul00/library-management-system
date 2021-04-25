@@ -23,7 +23,7 @@ namespace library_management_system.views
         private void button1_Click(object sender, EventArgs e)
         {
             AdminLoginForm adminLoginForm = new AdminLoginForm();
-            adminLoginForm.Show();
+            adminLoginForm.Show(); 
         }
 
         private void button2_Click(object sender, EventArgs e)
