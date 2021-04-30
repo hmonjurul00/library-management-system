@@ -1,6 +1,7 @@
 using System;
 using MySql.Data.MySqlClient;
 using models;
+using System.Collections.Generic;
 
 namespace db
 {
@@ -52,6 +53,34 @@ namespace db
             mySqlDataReader.Close();
             closeConnection();
             return false;
+        }
+
+        public List<ManagerBookEntry> getAllBooks()
+        {
+            connectMySQLDatabase();
+            List<ManagerBookEntry> bookList = new List<ManagerBookEntry>();
+            string query = "select * from manager_book_entry";
+
+            MySqlCommand mySqlCommand = new MySqlCommand(query, connection);
+            MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+            while(mySqlDataReader.Read())
+            {
+                ManagerBookEntry managerBookEntry = new ManagerBookEntry(
+                    mySqlDataReader.GetInt32("book_id"),
+                    mySqlDataReader.GetString("book_name"),
+                    mySqlDataReader.GetInt32("book_publish_year"),
+                    mySqlDataReader.GetString("writer_name"),
+                    mySqlDataReader.GetInt32("quantity_of_book"),
+                    mySqlDataReader.GetString("catagory_name"),
+                    mySqlDataReader.GetDateTime("entry_date"),
+                    mySqlDataReader.GetBoolean("is_available")
+                );
+                bookList.Add(managerBookEntry);
+            }
+
+            mySqlDataReader.Close();
+            closeConnection();
+            return bookList;
         }
     }
 }
