@@ -16,8 +16,9 @@ namespace library_management_system.views
 
         public AdminLoginForm()
         {
-            this.login = new Login("", "", "admin");
+            this.login = new Login("", "", "", "admin");
             InitializeComponent();
+            this.textBox2.PasswordChar = '*';
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -49,7 +50,15 @@ namespace library_management_system.views
                 adminManagerCreateForm.Show();
                 this.Close();
             }
-           
+            else
+            {
+                MessageBox.Show("Incorrect username or password!");
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

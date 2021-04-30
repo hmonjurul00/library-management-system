@@ -15,8 +15,9 @@ namespace library_management_system.views
         private Login login;
         public ManagerLoginForm()
         {
-            this.login = new Login("", "", "manager");
+            this.login = new Login("", "", "", "manager");
             InitializeComponent();
+            this.textBox2.PasswordChar = '*';
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -34,9 +35,13 @@ namespace library_management_system.views
             Auth auth = new Auth();
             if (auth.userLogin(this.login) == true)
             {
-                ManagerBookSearchForm managerBookSearchForm = new ManagerBookSearchForm();
-                managerBookSearchForm.Show();
+                ManagerBooksListForm managerBooksListForm = new ManagerBooksListForm();
+                managerBooksListForm.Show();
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect username or password!");
             }
         }
     }
