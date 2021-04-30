@@ -55,6 +55,27 @@ namespace db
             return false;
         }
 
+        public bool isMangerExist(Login login)
+        {
+            if (userLogin(login) == true)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        internal void addNewManager(Login login)
+        {
+            connectMySQLDatabase();
+            string query = "INSERT INTO `login` (`username`, `password`, `role`, `full_name`) VALUES " 
+                + "('" + login.Username + "', '" + login.Password + "', '" + login.Role + "', '" + login.FullName + "')";
+
+            MySqlCommand mySqlCommand = new MySqlCommand(query, connection);
+            MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+            mySqlDataReader.Close();
+            closeConnection();
+        }
+
         public List<ManagerBookEntry> getAllBooks()
         {
             connectMySQLDatabase();
@@ -72,7 +93,6 @@ namespace db
                     mySqlDataReader.GetString("writer_name"),
                     mySqlDataReader.GetInt32("quantity_of_book"),
                     mySqlDataReader.GetString("catagory_name"),
-                    mySqlDataReader.GetDateTime("entry_date"),
                     mySqlDataReader.GetBoolean("is_available")
                 );
                 bookList.Add(managerBookEntry);
@@ -81,6 +101,22 @@ namespace db
             mySqlDataReader.Close();
             closeConnection();
             return bookList;
+        }
+
+        internal void addNewBookEntry(ManagerBookEntry managerBookEntry)
+        {
+            connectMySQLDatabase();
+            string query = "INSERT INTO manager_book_entry (book_id, book_name, "
+                + "book_publish_year, writer_name, quantity_of_book, "
+                + " is_available, catagory_name) VALUES (NULL, "
+                + "'" + managerBookEntry.BookName + "', '" + managerBookEntry.BookPublishYear.ToString() + "', '"
+                + managerBookEntry.WriterName + "', '" + managerBookEntry.QuantityOfBook.ToString() + "', '" 
+                + (managerBookEntry.AvailableBook == true ? 1 : 0) + "', '" + managerBookEntry.CatagoryName + "')";
+
+            MySqlCommand mySqlCommand = new MySqlCommand(query, connection);
+            MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+            mySqlDataReader.Close();
+            closeConnection();
         }
     }
 }

@@ -52,15 +52,7 @@ namespace models
             set { catagoryName = value; }
         }
 
-        private DateTime entryDate;
-
-        public DateTime EntryDate
-        {
-            get { return entryDate; }
-            set { entryDate = value; }
-        }
-
-        private Boolean availableBook;
+        private Boolean availableBook = false;
 
         public Boolean AvailableBook
         {
@@ -76,7 +68,6 @@ namespace models
             string _writerName,
             int _quantityOfBook,
             string _categoryName,
-            DateTime _entryDate,
             Boolean _availableBook)
         {
             this.bookId = _bookId;
@@ -85,8 +76,32 @@ namespace models
             this.writerName = _writerName;
             this.quantityOfBook = _quantityOfBook;
             this.catagoryName = _categoryName;
-            this.entryDate = _entryDate;
             this.availableBook = _availableBook;
+        }
+
+        public Boolean isValidManagerBookEntry()
+        {
+            if (string.IsNullOrEmpty(this.bookName))
+            {
+                return false;
+            }
+            if (this.bookPublishYear == 0)
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.writerName))
+            {
+                return false;
+            }
+            if (this.quantityOfBook == 0)
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.catagoryName))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

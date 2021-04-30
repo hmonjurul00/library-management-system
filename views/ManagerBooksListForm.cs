@@ -10,9 +10,9 @@ using models;
 
 namespace library_management_system.views
 {
-    public partial class ManagerBookSearchForm : Form
+    public partial class ManagerBooksListForm : Form
     {
-        public ManagerBookSearchForm()
+        public ManagerBooksListForm()
         {
             InitializeComponent();
             loadData();
@@ -42,9 +42,30 @@ namespace library_management_system.views
                     managerBookEntry.WriterName,
                     managerBookEntry.QuantityOfBook.ToString(),
                     managerBookEntry.CatagoryName,
-                    managerBookEntry.AvailableBook.ToString()
+                    managerBookEntry.AvailableBook == true ? "Yes" : "No"
                 };
                 this.dataGridView1.Rows.Add(row);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ManagerAddBookInfoForm managerAddBookForm = new ManagerAddBookInfoForm();
+            managerAddBookForm.Show();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            const string message = "Are you sure that you would like to logout?";
+            const string caption = "Logout";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

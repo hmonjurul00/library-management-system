@@ -31,5 +31,20 @@ namespace library_management_system.views
             ManagerLoginForm managerLoginForm = new ManagerLoginForm();
             managerLoginForm.Show();
         }
+
+        private void UserForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
